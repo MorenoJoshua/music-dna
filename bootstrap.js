@@ -4,15 +4,15 @@
  */
 
 window.requestAnimFrame =
-  window.webkitRequestAnimationFrame ||
+  window.requestAnimationFrame ||
   window.mozRequestAnimationFrame ||
   window.msRequestAnimationFrame ||
   window.oRequestAnimationFrame ||
-  window.requestAnimationFrame;
+  window.webkitRequestAnimationFrame;
 
 (function() {
 
-  var musicDNA = new MusicDNA();
+  var musicDNA;
   var fileDropArea = document.getElementById('file-drop-area');
   var artist = document.getElementById('artist');
   var track = document.getElementById('track');
@@ -50,6 +50,7 @@ window.requestAnimFrame =
   }
 
   function go(file) {
+    musicDNA = new MusicDNA();
     musicDNA.parse(file);
     fileDropArea.classList.add('dropped');
 
